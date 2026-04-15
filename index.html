@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scaler | SSRF Single Challenge</title>
+  <meta
+    name="description"
+    content="A single SSRF interception challenge with one query input and one flag."
+  />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <nav class="top-nav container">
+      <div class="brand">SCALER Security Labs</div>
+      <ul class="nav-links">
+        <li><a href="#lab">Challenge</a></li>
+      </ul>
+      <a class="btn btn-outline" href="#lab">Start Demo</a>
+    </nav>
+
+    <section class="hero container">
+      <p class="eyebrow">Real-world inspired vulnerability playground</p>
+      <h1>SSRF Interception Challenge</h1>
+      <p class="hero-copy">
+        Intercept one vulnerable request and insert a single payload URL to test whether internal resources are reachable from the server.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#lab">Open Challenge</a>
+      </div>
+    </section>
+  </header>
+
+  <main class="container">
+    <section class="stats">
+      <article class="stat"><h3>One Input</h3><p>Single query payload</p></article>
+      <article class="stat"><h3>One Run</h3><p>Replay vulnerable request</p></article>
+      <article class="stat"><h3>One Flag</h3><p>Challenge output</p></article>
+      <article class="stat"><h3>SSRF</h3><p>Internal URL access test</p></article>
+    </section>
+
+    <section class="card intro-note">
+      <h2>Challenge Question</h2>
+      <p>
+        Can you trigger SSRF by replacing the intercepted URL with an internal destination?
+        Insert one JSON query in the input below and run it.
+      </p>
+      <p class="warning">
+        For authorized security education only. Do not test against systems you do not own or have explicit permission to assess.
+      </p>
+    </section>
+
+    <section id="lab" class="workspace-grid">
+      <article class="card module" data-id="ssrfChallenge">
+        <p class="badge">Media Service</p>
+        <h3>Single Query SSRF Lab</h3>
+        <p class="context">Intercepted request: <code>POST /api/media/fetch-image</code></p>
+        <textarea class="payload" placeholder='{"url":"https://cdn.scaler-assets.com/products/a1.png"}'></textarea>
+        <div class="sim-actions">
+          <button class="action run">Run Query</button>
+        </div>
+        <div class="lab-flag idle">FLAG pending...</div>
+      </article>
+    </section>
+
+    <section class="card">
+      <h3>Interception Activity Stream</h3>
+      <pre id="activity" class="output">No requests yet.</pre>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>SCALER Security Labs</p>
+    <small>SSRF awareness demo</small>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
