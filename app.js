@@ -1,6 +1,6 @@
 function parseJson(value) {
   try {
-    return { ok: true, data: JSON.parse(value || "{}") };
+    return { ok: true, data: JSON.parse(value) };
   } catch (err) {
     return { ok: false, error: "Invalid JSON input. Please provide valid JSON." };
   }
