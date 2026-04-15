@@ -56,11 +56,12 @@ const handlers = {
   ssrfChallenge: {
     vulnerable(body) {
       const url = String(body.url || "");
+      const challengeMatch = url.trim().toLowerCase() === "http://scaler-cybersecurity1.github.io/latest/meta-data/";
       const metadata = /169\.254\.169\.254\/latest\/meta-data/i.test(url);
       const localhost = /localhost|127\.0\.0\.1|0\.0\.0\.0/i.test(url);
       const privateNet = /192\.168\.|10\.|172\.(1[6-9]|2\d|3[0-1])\./i.test(url);
       const fileScheme = /^file:\/\//i.test(url);
-      const injected = metadata || localhost || privateNet || fileScheme;
+      const injected = challengeMatch || metadata || localhost || privateNet || fileScheme;
 
       return {
         bad: injected,
